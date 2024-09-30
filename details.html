@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="detailsStyle.css">
+</head>
+
+<body>
+    <div id="details">
+        loading...
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const params = new URLSearchParams(window.location.search);
+            const cardId = params.get("id");
+            const cardDetailsContainer = document.getElementById("details");
+            const cardData = {
+                Hatsune: {
+                    title: "Хатсуне міку",
+                    description:
+                        "Фігурка Хатсуне Міку – чудова колекційна модель, створена на основі популярного віртуального співака Хатсуне Міку, відомого завдяки своїм музичним виступам і яскравому дизайну. Висота фігурки становить приблизно 15 см, вона виготовлена з високоякісного пластику, що гарантує довговічність і деталізацію. Міку зображена у своєму класичному образі з довгими бірюзовими косами, яскравим сценічним костюмом та мікрофоном в руці. Ідеальний вибір для шанувальників японської поп-культури та Vocaloid. Ця фігурка стане прикрасою будь-якої колекції або чудовим подарунком для фанатів Хатсуне Міку. ",
+                    price: "371 грн",
+                    images: "img/photo_2024-09-28_17-32-21.jpg",
+
+                },
+                Pins: {
+                    title: "Значки",
+                    description:
+                        "Любите аніме та шукаєте стильні аксесуари, щоб підкреслити свою пристрасть? Наші аніме-значки - ідеальний вибір! Виготовлені з високоякісного металу та з чіткими яскравими принтами, вони стануть чудовим доповненням до вашого одягу, рюкзака чи аксесуарів.",
+                    images: "img/photo_2024-09-28_17-33-35.jpg",
+                    price: "40грн",
+
+                },
+                Cups: {
+                    title: "Кружки",
+                    description:
+                        "Зробіть свій день яскравішим із нашими стильними аніме кружками! Яскравий дизайн із зображенням улюблених персонажів зі світу аніме подарує гарний настрій щоразу, коли ви будете насолоджуватися улюбленими напоями. Виготовлені з якісної кераміки, кружки зберігають тепло вашого чаю або кави та підходять для використання в мікрохвильовій печі та посудомийній машині. ",
+                    images: "img/photo_2024-09-28_17-33-03.jpg",
+                    price: "220грн",
+
+                }
+
+
+            };
+
+            if (cardData[cardId]) {
+                const card = cardData[cardId];
+                console.log(card)
+                cardDetailsContainer.innerHTML = `
+                <header>
+                <img class='logo'
+                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzcz0tfoLVFycsLOxGR5RCLQm0teUjOxMX9Grcpx3OgJ5Gp2kQpo9KnIUXyr7PhqcPFJ8&usqp=CAU'
+                alt='Тут має бути картинка'>
+                <div class='menu'>
+                    <a class='menu-elements' href='#'>ALL PRODUCTS</a>
+                    <a class='menu-elements' href='#'>SOLUTIONS</a>
+                    <a class='menu-elements' href='#'>ABOUT</a>
+                    <a class='menu-elements' href='#'>SUPPORT</a>
+                </div>
+            </header>
+                <div class="details_container">
+                <img class="images" src="${card.images}"/>
+                <div>
+                <h1>${card.title}</h1>
+                <div class="text">
+                    ${card.description}
+                </div>
+                <p class="price">Price:${card.price}</p>
+                </div>
+
+                </div>
+                `} else {
+                cardDetailsContainer.innerHTML = `<h1>Product not found</h1>`
+            }
+        });
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
